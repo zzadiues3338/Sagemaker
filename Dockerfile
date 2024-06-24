@@ -7,10 +7,12 @@ WORKDIR /opt/ml
 # Copy the model and code into the container
 COPY model.pth /opt/ml/model/
 COPY inference.py /opt/ml/code/
-
+COPY vegan_model.py /opt/ml/code/
 # Install any additional Python packages
 RUN pip install --no-cache-dir segmentation-models-pytorch
 RUN pip install --no-cache-dir boto3
+RUN pip install --no-cache-dir opencv-python-headless
+RUN pip install --no-cache-dir matplotlib 
 
 # Define environment variables
 ENV PYTHONUNBUFFERED=TRUE
